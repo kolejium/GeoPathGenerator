@@ -31,3 +31,8 @@ It is assumed that the settings file can be changed, for this the application po
 
 The Update button has 2 states: inactive and active. In active mode, the user can cancel the iteration of updating the settings from the file. In inactive mode, it can force the update operation of the settings from the file.
 
+# Settings file format
+
+```
+{"EnvironmentSettings":{"FontFamily":"Franklin Gothic Medium","FontSize":12,"IconSize":20},"ThemeSettings":{"IsDark":false,"PrimaryColor":"Chocolate","SecondaryColor":"DarkOliveGreen","PrimaryForegroundColor":"AliceBlue","SecondaryForegroundColor":"DeepPink"}}
+```
