@@ -29,9 +29,9 @@ public class SettingsViewModel : BindableBase, INavigationAware
 
     public ICommand CancelCommand { get; }
 
-    private ICommand _stopUpdatingCommand;
+    private readonly ICommand _stopUpdatingCommand;
 
-    private ICommand _startUpdateCommand;
+    private readonly ICommand _startUpdateCommand;
 
     public ICommand UpdateCommand => IsUpdating ? _stopUpdatingCommand : _startUpdateCommand;
 

@@ -4,6 +4,8 @@ namespace GeoPathGenerator.App.Common.Models.Settings;
 
 public class ThemeSettings : ICloneable, IEquatable<ThemeSettings>
 {
+    public bool IsDark { get; set; }
+
     public Color PrimaryColor { get; set; }
 
     public Color SecondaryColor { get; set; }
@@ -16,6 +18,7 @@ public class ThemeSettings : ICloneable, IEquatable<ThemeSettings>
     {
         return new ThemeSettings
         {
+            IsDark = IsDark,
             PrimaryColor = PrimaryColor,
             SecondaryColor = SecondaryColor,
             PrimaryForegroundColor = PrimaryForegroundColor,

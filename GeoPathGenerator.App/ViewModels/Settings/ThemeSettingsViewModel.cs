@@ -3,12 +3,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using GeoPathGenerator.App.Common.Models.Settings;
+using GeoPathGenerator.App.Events;
 using GeoPathGenerator.App.Managers;
 using GeoPathGenerator.Wpf.Common.Enums;
 using MaterialDesignColors;
 using MaterialDesignColors.ColorManipulation;
 using MaterialDesignThemes.Wpf;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 
@@ -19,6 +21,8 @@ public class ThemeSettingsViewModel : BindableBase, INavigationAware
     #region [ Variables ]
 
     private readonly ApplicationManager _applicationManager;
+
+    private Common.Models.Settings.Settings? _settings;
 
     private ColorScheme _activeScheme;
 
@@ -79,6 +83,9 @@ public class ThemeSettingsViewModel : BindableBase, INavigationAware
             {
                 _applicationManager.Theme.SetBaseTheme(value ? Theme.Dark : Theme.Light);
                 _applicationManager.UpdateTheme();
+
+                if (_settings != null)
+                    _settings.ThemeSettings.IsDark = _isDarkTheme;
             }
         }
     }
@@ -87,7 +94,7 @@ public class ThemeSettingsViewModel : BindableBase, INavigationAware
 
     #region [ Constructors ]
 
-    public ThemeSettingsViewModel(ApplicationManager applicationManager)
+    public ThemeSettingsViewModel(ApplicationManager applicationManager, IEventAggregator eventAggregator)
     {
         _applicationManager = applicationManager;
         _color = Colors.Black;
@@ -96,6 +103,13 @@ public class ThemeSettingsViewModel : BindableBase, INavigationAware
         ChangeToSecondaryCommand = new DelegateCommand(() => ChangeScheme(ColorScheme.Secondary));
         ChangeToPrimaryForegroundCommand = new DelegateCommand(() => ChangeScheme(ColorScheme.PrimaryForeground));
         ChangeToSecondaryForegroundCommand = new DelegateCommand(() => ChangeScheme(ColorScheme.SecondaryForeground));
+
+        eventAggregator.GetEvent<SettingsUpdatedEvent>().Subscribe(OnSettingsUpdated);
+    }
+
+    private void OnSettingsUpdated(Common.Models.Settings.Settings? obj)
+    {
+        if (obj != null) SetSettings(obj.ThemeSettings);
     }
 
     #endregion
@@ -175,7 +189,10 @@ public class ThemeSettingsViewModel : BindableBase, INavigationAware
 
     public void OnNavigatedTo(NavigationContext navigationContext)
     {
+        if (navigationContext.Parameters.ContainsKey("Settings"))
+            _settings = (Common.Models.Settings.Settings)navigationContext.Parameters["Settings"];
 
+        SetSettings(_applicationManager.Settings.ThemeSettings);
     }
 
     public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -186,5 +203,10 @@ public class ThemeSettingsViewModel : BindableBase, INavigationAware
     public void OnNavigatedFrom(NavigationContext navigationContext)
     {
 
+    }
+
+    private void SetSettings(ThemeSettings model)
+    {
+        IsDarkTheme = model.IsDark;
     }
 }
