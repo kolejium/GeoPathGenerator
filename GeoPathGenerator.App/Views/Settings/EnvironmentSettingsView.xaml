@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="GeoPathGenerator.App.Views.Settings.EnvironmentSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GeoPathGenerator.App.Views.Settings"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:validationRules="clr-namespace:GeoPathGenerator.App.ValidationRules"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource CustomMaterialDesignTextBlock}"/>
+        <Style x:Key="CardStyle" TargetType="{x:Type materialDesign:Card}">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel>
+        
+        <!-- Font Settings -->
+        <materialDesign:Card Style="{StaticResource CardStyle}">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock>
+                        <Run Text="FontSize:"/>
+                        <Run Text="{Binding FontSize, Mode=OneWay}"/>
+                        </TextBlock>
+                        <StackPanel>
+                            <TextBlock Text="{Binding MinFontSize, Mode=OneWay}"/>
+                            <Slider Maximum="{Binding MaxFontSize, Mode=OneWay}"
+                                    Minimum="{Binding MinFontSize, Mode=OneWay}"
+                                    Value="{Binding FontSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding MaxFontSize, Mode=OneWay}"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="FontFamily"/>
+
+                        <ComboBox ItemsSource="{Binding AvailableFonts, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                  FontFamily="{StaticResource FontFamily}"
+                                  FontSize="{StaticResource FontSize}"
+                                  Style="{StaticResource MaterialDesignOutlinedComboBox}">
+                            <ComboBox.SelectedItem>
+                                <Binding
+                                Mode="TwoWay"
+                                Path="FontFamily"
+                                UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </ComboBox.SelectedItem>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock FontFamily="{Binding FontFamily}"
+                           FontSize="{Binding FontSize}"
+                           Text="Text for test settings" />
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!-- Icon Settings -->
+        <materialDesign:Card Style="{StaticResource CardStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock>
+                    <Run Text="IconSize:"/>
+                    <Run Text="{Binding IconSize, Mode=OneWay}"/>
+                    </TextBlock>
+                    <StackPanel>
+                        <TextBlock Text="{Binding MinIconSize, Mode=OneWay}"/>
+                        <Slider Maximum="{Binding MaxIconSize, Mode=OneWay}"
+                            Minimum="{Binding MinIconSize, Mode=OneWay}"
+                            Value="{Binding IconSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="{Binding MaxIconSize, Mode=OneWay}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <UniformGrid Columns="2" 
+                         Grid.Column="1"
+                         Rows="2">
+                    <materialDesign:PackIcon Height="{Binding IconSize}" 
+                                         Kind="ABCOff"
+                                         Width="{Binding IconSize}"/>
+                    <materialDesign:PackIcon Height="{Binding IconSize}" 
+                                         Kind="Delete"
+                                         Width="{Binding IconSize}"/>
+                    <Button MinHeight="{Binding IconSize}"
+                        MinWidth="{Binding IconSize}">
+                        <materialDesign:PackIcon Height="{Binding IconSize}" 
+                                             Kind="Dagger"
+                                             Width="{Binding IconSize}"/>
+                    </Button>
+                    <Button MinHeight="{Binding IconSize}"
+                        MinWidth="{Binding IconSize}">
+                        <materialDesign:PackIcon Height="{Binding IconSize}" 
+                                             Kind="Adjust"
+                                             Width="{Binding IconSize}"/>
+                    </Button>
+                </UniformGrid>
+            </Grid>
+        </materialDesign:Card>
+
+    </StackPanel>
+
+</UserControl>

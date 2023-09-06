@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoPathGenerator.App", "GeoPathGenerator.App\GeoPathGenerator.App.csproj", "{D7C49459-2A09-42FB-A0CE-DB04749B9F3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoPathGenerator.App.Common", "GeoPathGenerator.App.Common\GeoPathGenerator.App.Common.csproj", "{B1959EA5-C849-482D-B1F4-7FCDE78AB43D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoPathGenerator.Wpf.Common", "GeoPathGenerator.Wpf.Common\GeoPathGenerator.Wpf.Common.csproj", "{80ADDC23-CDD3-4337-B182-16FF3128EC83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoPathGenerator.App.Common.Tests", "GeoPathGenerator.App.Common.Tests\GeoPathGenerator.App.Common.Tests.csproj", "{4674D2CC-48CE-4A29-A3EB-4631ABE6F280}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7C49459-2A09-42FB-A0CE-DB04749B9F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7C49459-2A09-42FB-A0CE-DB04749B9F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7C49459-2A09-42FB-A0CE-DB04749B9F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7C49459-2A09-42FB-A0CE-DB04749B9F3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1959EA5-C849-482D-B1F4-7FCDE78AB43D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1959EA5-C849-482D-B1F4-7FCDE78AB43D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1959EA5-C849-482D-B1F4-7FCDE78AB43D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1959EA5-C849-482D-B1F4-7FCDE78AB43D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80ADDC23-CDD3-4337-B182-16FF3128EC83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80ADDC23-CDD3-4337-B182-16FF3128EC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80ADDC23-CDD3-4337-B182-16FF3128EC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80ADDC23-CDD3-4337-B182-16FF3128EC83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4674D2CC-48CE-4A29-A3EB-4631ABE6F280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4674D2CC-48CE-4A29-A3EB-4631ABE6F280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4674D2CC-48CE-4A29-A3EB-4631ABE6F280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4674D2CC-48CE-4A29-A3EB-4631ABE6F280}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6E70192-8D5F-4116-A360-BF6441C4CDE2}
+	EndGlobalSection
+EndGlobal

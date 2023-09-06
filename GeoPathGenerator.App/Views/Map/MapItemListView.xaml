@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="GeoPathGenerator.App.Views.Map.MapItemListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GeoPathGenerator.App.Views.Map"
+             xmlns:menu="clr-namespace:GeoPathGenerator.App.ViewModels.Menu"
+             xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:map="clr-namespace:GeoPathGenerator.App.ViewModels.Map"
+             mvvm:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <ItemsControl ItemsSource="{Binding MapItems, Mode=OneWay}">
+        <ItemsControl.Resources>
+            <DataTemplate DataType="{x:Type map:MapItemViewModel}">
+                <local:MapItemView/>
+            </DataTemplate>
+        </ItemsControl.Resources>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <ContentControl Content="{Binding }"/>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>
