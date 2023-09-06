@@ -44,7 +44,7 @@ public class SettingsViewModel : BindableBase, INavigationAware
         set => SetProperty(ref _autoUpdateEnabled, value, async () =>
         {
             if (_autoUpdateEnabled) 
-                await _settingsMonitorService.Start();
+                await _settingsMonitorService.Start().ConfigureAwait(false);
             else
                 _settingsMonitorService.Stop();
         });

@@ -54,7 +54,8 @@ public class SettingsMonitorService
 
     public void Dispose()
     {
-        _cancellationTokenSource.Cancel();
+        _cancellationTokenSource.Cancel(true);
+        _cancellationTokenSource.Dispose();
         _periodicTimer?.Dispose();
     }
 

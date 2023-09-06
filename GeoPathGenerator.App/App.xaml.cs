@@ -47,4 +47,13 @@ public partial class App : PrismApplication
 
         return Container.Resolve<MainWindow>();
     }
+
+    protected override void OnExit(ExitEventArgs e)
+    {
+        var service = Container.Resolve<SettingsMonitorService>();
+            
+        service.Dispose();
+
+        base.OnExit(e);
+    }
 }
